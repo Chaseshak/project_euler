@@ -1,21 +1,20 @@
 MAX = 4000000
 
 def solution
-  sum = 0
-  i = 1
-  j = 2
+  n1, n2 = 1, 2
+  sequence = [n1, n2]
 
-  while i <= MAX && j <= MAX
-    next_val = i + j
+  loop do
+    nextval = n1 + n2
+    break if nextval > MAX
 
-    sum += i if i.even?
-    sum += j if j.even?
+    sequence << nextval
 
-    j = i
-    i = next_val
+    n1 = n2
+    n2 = nextval
   end
 
-  sum
+  sequence.select(&:even?).reduce(:+)
 end
 
 puts solution
